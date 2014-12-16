@@ -5,10 +5,18 @@
 </head>
 <body>
 
+<audio id="saber_sound" src="dannysaber.ogg" preload="auto">
+	<p>You do not support audio tags!</p>
+</audio>
+
 <pre id="text">
 </pre>
 
 <script type="text/javascript">
+
+function playSaberSound() {
+	document.getElementById("saber_sound").play();
+}
 
 function orientationUpdate(event) {
 	document.getElementById("text").textContent = event.absolute + "\n" + event.alpha + "\n" + event.beta + "\n" + event.gamma;
