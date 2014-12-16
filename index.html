@@ -9,18 +9,32 @@
 	<p>You do not support audio tags!</p>
 </audio>
 
+<button onclick="initialize()" id="initialize">Initialize</button>
+
 <pre id="text">
 </pre>
 
 <script type="text/javascript">
 
+var vol = 0;
+
 function playSaberSound() {
-	document.getElementById("saber_sound").play();
+	var audio = document.getElementById("saber_sound");
+	audio.volume = vol;
+	audio.play();
 }
 
 function orientationUpdate(event) {
 	document.getElementById("text").textContent = event.absolute + "\n" + event.alpha + "\n" + event.beta + "\n" + event.gamma;
+	playSaberSound();
 }
+
+function initialize() {
+	playSaberSound();
+	document.body.removeChild(document.getElementById("initialize"));
+	vol = 1;
+}
+
 window.addEventListener("deviceorientation", orientationUpdate, true);
 
 </script>
