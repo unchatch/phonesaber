@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Phonesaber</title>
+</head>
+<body>
+
+<pre id="text">
+</pre>
+
+<script type="text/javascript">
+
+function orientationUpdate(event) {
+	document.getElementById("text").textContent = event.absolute + "\n" + event.alpha + "\n" + event.beta + "\n" + event.gamma;
+}
+window.addEventListener("deviceorientation", orientationUpdate, true);
+
+</script>
+</body>
+</html>
