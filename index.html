@@ -16,7 +16,7 @@
 
 <script type="text/javascript">
 
-var vol = 0;
+var vol = 1;
 
 function playSaberSound() {
 	var audio = document.getElementById("saber_sound");
@@ -24,9 +24,12 @@ function playSaberSound() {
 	audio.play();
 }
 
-function orientationUpdate(event) {
-	document.getElementById("text").textContent = event.absolute + "\n" + event.alpha + "\n" + event.beta + "\n" + event.gamma;
-	playSaberSound();
+function accelerationUpdate(event) {
+	document.getElementById("text").textContent = event.acceleration.x + "\n" + event.acceleration.y + "\n" + event.acceleration.z;
+	if(Math.abs(event.acceleration.x) > 10 || Math.abs(event.acceleration.y) > 10 || Math.abs(event.acceleration.z) > 10)
+	{
+		playSaberSound();
+	}
 }
 
 function initialize() {
@@ -35,7 +38,7 @@ function initialize() {
 	vol = 1;
 }
 
-window.addEventListener("deviceorientation", orientationUpdate, true);
+window.addEventListener("devicemotion", accelerationUpdate, true);
 
 </script>
 </body>
